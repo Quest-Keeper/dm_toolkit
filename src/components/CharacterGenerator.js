@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import openai from 'openai';
+
+openai.apiKey = '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';
 
 const CharacterGenerator = () => {
   const [race, setRace] = useState("");
@@ -10,11 +13,27 @@ const CharacterGenerator = () => {
   const genders = ["Male", "Female"];
   const ages = ["Young", "Middle-aged", "Old"];
 
-  const generateCharacter = () => {
-    const name = "Random Name"; // Replace with a function to generate a random name
-    const description = "Random Description"; // Replace with a function to generate a random description
+  const generateCharacter = async () => {
+    try {
+      const nameResponse = await openai.Completion.create({
+        engine: "text-davinci-003",
+        prompt: `Generate a unique ${race} ${gender} name for a dunegons and dragons character`,
+        max_tokens: 3
+      });
+      
+      const descriptionResponse = await openai.Completion.create({
+        engine: "text-davinci-003",
+        prompt: `Describe a ${age} ${race} ${gender} dunegons and dragons character character`,
+        max_tokens: 60
+      });
 
-    setCharacter({ race, gender, age, name, description });
+      const name = nameResponse.choices[0].text.trim();
+      const description = descriptionResponse.choices[0].text.trim();
+
+      setCharacter({ race, gender, age, name, description });
+    } catch (error) {
+      console.error("Error generating character:", error);
+    }
   };
 
   return (
