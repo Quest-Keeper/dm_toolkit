@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import openai from 'openai';
 
-openai.apiKey = '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';
+openai.apiKey = '';
 
 const CharacterGenerator = () => {
   const [race, setRace] = useState("");
