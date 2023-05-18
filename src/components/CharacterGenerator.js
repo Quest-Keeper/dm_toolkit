@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import openai from 'openai';
-
-openai.apiKey = '';
 
 const CharacterGenerator = () => {
   const [race, setRace] = useState("");
@@ -14,25 +11,18 @@ const CharacterGenerator = () => {
   const ages = ["Young", "Middle-aged", "Old"];
 
   const generateCharacter = async () => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ race, gender, age })
+    };
+
     try {
-      const nameResponse = await openai.Completion.create({
-        engine: "text-davinci-003",
-        prompt: `Generate a unique ${race} ${gender} name for a dunegons and dragons character`,
-        max_tokens: 3
-      });
-      
-      const descriptionResponse = await openai.Completion.create({
-        engine: "text-davinci-003",
-        prompt: `Describe a ${age} ${race} ${gender} dunegons and dragons character character`,
-        max_tokens: 60
-      });
-
-      const name = nameResponse.choices[0].text.trim();
-      const description = descriptionResponse.choices[0].text.trim();
-
-      setCharacter({ race, gender, age, name, description });
+      const response = await fetch('http://localhost:3001/api/v1/characters', requestOptions);
+      const data = await response.json();
+      setCharacter(data.data.attributes);      
     } catch (error) {
-      console.error("Error generating character:", error);
+      console.error('Error:', error);
     }
   };
 
