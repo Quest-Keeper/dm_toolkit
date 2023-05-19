@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 
+// Define the possible monster types and challenge ratings
+const monsterTypes = ["Dragon", "Beast", "Humanoid", "Fiend", "Undead"];
+const challengeRatings = ["0", "0.5", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "30"];
+
 const EncounterBuilder = () => {
   const [monsterType, setMonsterType] = useState("");
   const [challengeRating, setChallengeRating] = useState("");
@@ -8,7 +12,6 @@ const EncounterBuilder = () => {
   const fetchMonsters = async () => {
     const response = await fetch(`http://localhost:3001/api/v1/monsters?type=${monsterType}&challenge_rating=${challengeRating}`);
     const data = await response.json();
-    console.log(data);
     setMonsters(data.results);
   };
 
@@ -32,18 +35,18 @@ const EncounterBuilder = () => {
           </p>
 
           <div className="form-group">
-            <input
-              className="form-control"
-              placeholder="Monster Type"
-              value={monsterType}
-              onChange={e => setMonsterType(e.target.value)}
-            />
-            <input
-              className="form-control mt-2"
-              placeholder="Challenge Rating"
-              value={challengeRating}
-              onChange={e => setChallengeRating(e.target.value)}
-            />
+            <select className="form-control" value={monsterType} onChange={e => setMonsterType(e.target.value)}>
+              <option value="">Select Monster Type</option>
+              {monsterTypes.map((type, index) => (
+                <option key={index} value={type}>{type}</option>
+              ))}
+            </select>
+            <select className="form-control mt-2" value={challengeRating} onChange={e => setChallengeRating(e.target.value)}>
+              <option value="">Select Challenge Rating</option>
+              {challengeRatings.map((rating, index) => (
+                <option key={index} value={rating}>{rating}</option>
+              ))}
+            </select>
             <button className="btn btn-light btn-lg mt-2" onClick={fetchMonsters}>Build Now</button>
           </div>
 
