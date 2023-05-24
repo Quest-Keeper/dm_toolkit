@@ -29,7 +29,7 @@ const CharacterGenerator = () => {
   return (
     <div className="col-md-6 mt-4">
       <div className="card bg-primary text-white mb-4">
-        <div className="card-body">
+        <div className="card-body text-center">
           <h4 className="card-title mb-4">Character Generator</h4>
           <p className="card-text mb-4">
             Generate brave heroes and cunning villains for your quests.

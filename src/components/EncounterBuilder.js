@@ -28,7 +28,7 @@ const EncounterBuilder = () => {
   return (
     <div className="col-md-6 mt-4">
       <div className="card bg-danger text-white mb-4">
-        <div className="card-body">
+        <div className="card-body text-center">
           <h4 className="card-title mb-4">Encounter Builder</h4>
           <p className="card-text mb-4">
             Assemble fearsome monsters and challenging encounters for your players.

@@ -1,0 +1,22 @@
+.item-card {
+  border: 0;
+  transition: transform 0.2s ease-in-out;
+}
+
+.item-card:hover {
+  transform: scale(1.05);
+}
+
+.item-card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.item-button {
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.item-button:hover {
+  background-color: #f8f9fa;
+  color: #343a40;
+}

@@ -1,5 +1,10 @@
 .App {
+  background-color: #f8f9fa;
   text-align: center;
+}
+
+.container-fluid {
+  padding: 0;
 }
 
 .App-logo {
@@ -35,4 +40,19 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.custom-container {
+  width: 100%; /* Adjust the width value as per your requirement */
+  max-width: 1200px; /* Adjust the max-width value as per your requirement */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+.custom-container .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.custom-container .col-md-4 {
+  width: 33.33%; /* Adjust the width value as per your requirement */
 }
