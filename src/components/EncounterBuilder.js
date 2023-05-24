@@ -26,34 +26,31 @@ const EncounterBuilder = () => {
   };
 
   return (
-    <div className="col-md-4">
-      <div className="card bg-danger text-white mb-3">
+    <div className="col-md-6 mt-4">
+      <div className="card bg-danger text-white mb-4">
         <div className="card-body">
-          <h5 className="card-title">Encounter Builder</h5>
-          <p className="card-text">
+          <h4 className="card-title mb-4">Encounter Builder</h4>
+          <p className="card-text mb-4">
             Assemble fearsome monsters and challenging encounters for your players.
           </p>
-
-          <div className="form-group">
-            <select className="form-control" value={monsterType} onChange={e => setMonsterType(e.target.value)}>
-              <option value="">Select Monster Type</option>
-              {monsterTypes.map((type, index) => (
-                <option key={index} value={type}>{type}</option>
-              ))}
-            </select>
-            <select className="form-control mt-2" value={challengeRating} onChange={e => setChallengeRating(e.target.value)}>
-              <option value="">Select Challenge Rating</option>
-              {challengeRatings.map((rating, index) => (
-                <option key={index} value={rating}>{rating}</option>
-              ))}
-            </select>
-            <button className="btn btn-light btn-lg mt-2" onClick={fetchMonsters}>Build Now</button>
+          <div className="form-row">
+            <div className="form-group col-md-6">
+              <select className="form-control form-control-lg" value={monsterType} onChange={e => setMonsterType(e.target.value)}>
+                <option value="">Monster Type</option>
+                {monsterTypes.map((type, index) => <option key={index} value={type}>{type}</option>)}
+              </select>
+            </div>
+            <div className="form-group col-md-6">
+              <select className="form-control form-control-lg" value={challengeRating} onChange={e => setChallengeRating(e.target.value)}>
+                <option value="">Challenge Rating</option>
+                {challengeRatings.map((rating, index) => <option key={index} value={rating}>{rating}</option>)}
+              </select>
+            </div>
           </div>
-
-          <div>
+          <button className="btn btn-light btn-lg mt-2" onClick={fetchMonsters}>Build Now</button>
+          <div className="mt-4 bg-dark text-white p-4 rounded">
             {displayMonsters()}
           </div>
-
         </div>
       </div>
     </div>

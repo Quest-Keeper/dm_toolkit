@@ -2,9 +2,11 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="mt-5">
-    <p>&copy; 2023 My D&D App. All rights reserved.</p>
-  </footer>
+    <footer className="footer mt-auto py-3 bg-dark text-white">
+      <div className="container-fluid">
+        <span>&copy; 2023 My D&D App. All rights reserved.</span>
+      </div>
+    </footer>
   );
 };
 

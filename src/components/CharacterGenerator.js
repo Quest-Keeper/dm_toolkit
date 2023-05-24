@@ -27,35 +27,41 @@ const CharacterGenerator = () => {
   };
 
   return (
-    <div className="col-md-4">
-      <div className="card bg-primary text-white mb-3">
+    <div className="col-md-6 mt-4">
+      <div className="card bg-primary text-white mb-4">
         <div className="card-body">
-          <h5 className="card-title">Character Generator</h5>
-          <p className="card-text">
+          <h4 className="card-title mb-4">Character Generator</h4>
+          <p className="card-text mb-4">
             Generate brave heroes and cunning villains for your quests.
           </p>
-          <div className="form-group">
-            <select className="form-control" value={race} onChange={e => setRace(e.target.value)}>
-              <option value="">Select Race</option>
-              {races.map((r, index) => <option key={index} value={r}>{r}</option>)}
-            </select>
-            <select className="form-control mt-2" value={gender} onChange={e => setGender(e.target.value)}>
-              <option value="">Select Gender</option>
-              {genders.map((g, index) => <option key={index} value={g}>{g}</option>)}
-            </select>
-            <select className="form-control mt-2" value={age} onChange={e => setAge(e.target.value)}>
-              <option value="">Select Age</option>
-              {ages.map((a, index) => <option key={index} value={a}>{a}</option>)}
-            </select>
-            <button className="btn btn-light btn-lg mt-2" onClick={generateCharacter}>Generate Now</button>
+          <div className="form-row">
+            <div className="form-group col-md-4">
+              <select className="form-control form-control-lg" value={race} onChange={e => setRace(e.target.value)}>
+                <option value="">Race</option>
+                {races.map((r, index) => <option key={index} value={r}>{r}</option>)}
+              </select>
+            </div>
+            <div className="form-group col-md-4">
+              <select className="form-control form-control-lg" value={gender} onChange={e => setGender(e.target.value)}>
+                <option value="">Gender</option>
+                {genders.map((g, index) => <option key={index} value={g}>{g}</option>)}
+              </select>
+            </div>
+            <div className="form-group col-md-4">
+              <select className="form-control form-control-lg" value={age} onChange={e => setAge(e.target.value)}>
+                <option value="">Age</option>
+                {ages.map((a, index) => <option key={index} value={a}>{a}</option>)}
+              </select>
+            </div>
           </div>
-          {character && <div className="mt-3 bg-dark text-white p-3 rounded">
-            <h6>Generated Character:</h6>
-            <p>Race: {character.race}</p>
-            <p>Gender: {character.gender}</p>
-            <p>Age: {character.age}</p>
-            <p>Name: {character.name}</p>
-            <p>Description: {character.description}</p>
+          <button className="btn btn-light btn-lg mt-2" onClick={generateCharacter}>Generate Now</button>
+          {character && <div className="mt-4 bg-dark text-white p-4 rounded">
+            <h5>Generated Character:</h5>
+            <p><strong>Race:</strong> {character.race}</p>
+            <p><strong>Gender:</strong> {character.gender}</p>
+            <p><strong>Age:</strong> {character.age}</p>
+            <p><strong>Name:</strong> {character.name}</p>
+            <p><strong>Description:</strong> {character.description}</p>
           </div>}
         </div>
       </div>

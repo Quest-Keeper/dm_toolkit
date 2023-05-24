@@ -10,17 +10,23 @@ import ItemSearch from './components/ItemSearch';
 
 const App = () => {
   return (
-    <div className="container text-center">
-      <Header />
-      <div className="row mt-5">
-        <CharacterGenerator />
-        <EncounterBuilder /> 
-        <LootGenerator />
-        <InitiativeTracker />
-        <CampaignManager />
-        <ItemSearch />
+    <div>
+      <div className="container-fluid full-width">
+        <Header />
       </div>
-      <Footer />
+      <div className="container mt-5">
+        <div className="row">
+          <CharacterGenerator />
+          <EncounterBuilder /> 
+          <LootGenerator />
+          <InitiativeTracker />
+          <CampaignManager />
+          <ItemSearch />
+        </div>
+      </div>
+      <div className="container-fluid full-width">
+        <Footer />
+      </div>
     </div>
   );
 };
