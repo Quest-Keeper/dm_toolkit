@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      <div className="custom-container mt-5">
+      <div className="custom-container">
         <div className="row">
           <div className="col-md-12 mb-5">
             <CharacterGenerator />

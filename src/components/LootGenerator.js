@@ -3,7 +3,7 @@ import '../SharedStyles.css';
 
 const LootGenerator = () => {
   return (
-    <div className="col-md-4 offset-md-3">
+    <div className="col-md-6 offset-md-3">
       <div className="card bg-success text-white mb-3 shadow-lg loot-card">
         <div className="card-body text-center">
           <h5 className="card-title">Loot Generator</h5>
