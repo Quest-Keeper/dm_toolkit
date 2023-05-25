@@ -7,44 +7,47 @@ import LootGenerator from './components/LootGenerator';
 import InitiativeTracker from './components/InitiativeTracker';
 import CampaignManager from './components/CampaignManager';
 import ItemSearch from './components/ItemSearch';
-import './App.css'; // Import the custom CSS file
+import './App.css';
 
 const App = () => {
   return (
     <div className="app">
-      <div className="container-fluid">
-        <Header />
-      </div>
-      <div className=" mt-5"> {/* Apply the custom container class */}
+      <Header />
+      <div className="custom-container mt-5">
         <div className="row">
-          <div className="col-md-4 mb-5">
+          <div className="col-md-12 mb-5">
             <CharacterGenerator />
           </div>
-          <div className="col-md-4 mb-5">
+        </div>
+        <div className="row">
+          <div className="col-md-12 mb-5">
             <EncounterBuilder />
           </div>
-          <div className="col-md-4 mb-5">
+        </div>
+        <div className="row">
+          <div className="col-md-12 mb-5">
             <LootGenerator />
           </div>
         </div>
         <div className="row">
-          <div className="col-md-4 mb-5">
+          <div className="col-md-12 mb-5">
             <InitiativeTracker />
           </div>
-          <div className="col-md-4 mb-5">
+        </div>
+        <div className="row">
+          <div className="col-md-12 mb-5">
             <CampaignManager />
           </div>
-          <div className="col-md-4 mb-5">
+        </div>
+        <div className="row">
+          <div className="col-md-12 mb-5">
             <ItemSearch />
           </div>
         </div>
       </div>
-      <div className="container-fluid">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
 
 export default App;
-

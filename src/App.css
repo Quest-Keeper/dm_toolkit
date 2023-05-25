@@ -1,51 +1,26 @@
-.App {
-  background-color: #f8f9fa;
+.app {
+  background-image: url('../public/images/d&d_background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  width: 100%;
+  height: 101vh;
   text-align: center;
+  color: #ffd700; /* Goldish color for text */
 }
 
 .container-fluid {
   padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .custom-container {
-  width: 100%; /* Adjust the width value as per your requirement */
-  max-width: 1200px; /* Adjust the max-width value as per your requirement */
-  margin: 0 auto; /* Center the container horizontally */
+  width: 100%; 
+  max-width: 1200px; 
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark background with a bit of transparency */
+  border-radius: 15px; /* Give some rounded corners */
+  padding: 20px; /* Inner spacing */
 }
 
 .custom-container .row {
@@ -54,5 +29,22 @@
 }
 
 .custom-container .col-md-4 {
-  width: 33.33%; /* Adjust the width value as per your requirement */
+  width: 33.33%;
+  padding: 15px; /* Give some spacing for cards */
+}
+
+.card {
+  background-color: rgba(255, 215, 0, 0.1); /* Goldish background with a bit of transparency for cards */
+  border: 2px solid #ffd700; /* Goldish border for cards */
+  border-radius: 15px; /* Rounded corners for cards */
+}
+
+.btn-light {
+  background-color: #ffd700; /* Goldish color for buttons */
+  color: #000000; /* Black color text on buttons */
+}
+
+.btn-light:hover {
+  background-color: #ffcc00; /* Lighter goldish color for button hover */
+  color: #000000;
 }

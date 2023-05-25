@@ -28,7 +28,7 @@ const CharacterGenerator = () => {
   };
 
   return (
-    <div className="col-md-6 mt-4 shared-component">
+    <div className="col-md-6 mt-4 offset-md-3">
       <div className="card bg-primary text-white mb-4 shadow-lg">
         <div className="card-body text-center">
           <h4 className="card-title mb-4">Character Generator</h4>

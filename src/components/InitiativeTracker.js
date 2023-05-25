@@ -3,7 +3,7 @@ import '../SharedStyles.css';
 
 const InitiativeTracker = () => {
   return (
-    <div className="col-md-6">
+    <div className="col-md-6 offset-md-3">
       <div className="card bg-info text-white mb-3 shadow-lg initiative-card">
         <div className="card-body text-center">
           <h5 className="card-title">Initiative Tracker</h5>

@@ -3,7 +3,7 @@ import '../SharedStyles.css';
 
 const CampaignManager = () => {
   return (
-    <div className="col-md-6">
+    <div className="col-md-6 offset-md-3">
       <div className="card bg-warning text-white mb-3 shadow-lg campaign-card">
         <div className="card-body text-center">
           <h5 className="card-title">Campaign Manager</h5>
