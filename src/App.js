@@ -15,7 +15,7 @@ const App = () => {
       <div className="container-fluid">
         <Header />
       </div>
-      <div className="custom-container mt-5"> {/* Apply the custom container class */}
+      <div className=" mt-5"> {/* Apply the custom container class */}
         <div className="row">
           <div className="col-md-4 mb-5">
             <CharacterGenerator />

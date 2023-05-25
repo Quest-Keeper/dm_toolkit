@@ -1,5 +1,5 @@
 import React from 'react';
-import './InitiativeTracker.css';
+import '../SharedStyles.css';
 
 const InitiativeTracker = () => {
   return (

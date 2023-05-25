@@ -1,5 +1,5 @@
 import React from 'react';
-import './CampaignManager.css';
+import '../SharedStyles.css';
 
 const CampaignManager = () => {
   return (
