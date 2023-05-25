@@ -4,7 +4,7 @@ import '../SharedStyles.css';
 const ItemSearch = () => {
   return (
     <div className="col-md-6 offset-md-3">
-      <div className="card bg-secondary text-white mb-3 shadow-lg item-card">
+      <div className="card bg-dark text-white mb-3 shadow-lg item-card">
         <div className="card-body text-center">
           <h5 className="card-title">Item Search</h5>
           <p className="card-text">

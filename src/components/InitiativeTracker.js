@@ -27,7 +27,7 @@ const InitiativeTracker = () => {
 
   return (
     <div className="col-md-6 offset-md-3">
-      <div className="card bg-info text-white mb-3 shadow-lg initiative-card">
+      <div className="card bg-dark text-white mb-3 shadow-lg initiative-card">
         <div className="card-body text-center">
           <h5 className="card-title">Initiative Tracker</h5>
           <form onSubmit={addCombatant}>
