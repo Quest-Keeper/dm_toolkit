@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Card, Button, Form, Accordion, Badge, ListGroup } from 'react-bootstrap';
+import React, { useState, useEffect  } from 'react';
+import { Card, Button, Form, Accordion, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../SharedStyles.css';
 
@@ -10,7 +10,18 @@ const CampaignManager = () => {
   const [noteContent, setNoteContent] = useState('');
   const [selectedCampaign, setSelectedCampaign] = useState(null);
   const [selectedSession, setSelectedSession] = useState(null);
+  
+  useEffect(() => {
+    const savedCampaigns = localStorage.getItem('campaigns');
+    if (savedCampaigns) {
+      setCampaigns(JSON.parse(savedCampaigns));
+    }
+  }, []);
 
+  useEffect(() => {
+    localStorage.setItem('campaigns', JSON.stringify(campaigns));
+  }, [campaigns]);
+  
   const addCampaign = () => {
     const newCampaign = {
       id: new Date().getTime(),
@@ -21,6 +32,10 @@ const CampaignManager = () => {
     setCampaigns([newCampaign, ...campaigns]);
     setCampaignName('');
   };
+
+  const deleteCampaign = (campaignId) => {
+    setCampaigns(campaigns.filter(campaign => campaign.id !== campaignId));
+  };  
 
   const addSession = (campaignId) => {
     const newSession = {
@@ -57,60 +72,56 @@ const CampaignManager = () => {
           />
           <Button variant="outline-light" onClick={addCampaign}>Add Campaign</Button>
         </Form>
-
         <Accordion>
           {campaigns.map(campaign => (
-            <Card key={campaign.id} className="bg-dark text-white">
-              <Accordion.Toggle as={Card.Header} eventKey={campaign.id.toString()}>
+            <Accordion.Item eventKey={campaign.id.toString()} key={campaign.id}>
+              <Accordion.Header>
                 {campaign.name}
-              </Accordion.Toggle>
+                <Button variant="dark" onClick={() => deleteCampaign(campaign.id)}>Delete Campaign</Button>
+              </Accordion.Header>
+              <Accordion.Body> 
+                <Form inline className="justify-content-center my-3">
+                  <Form.Control 
+                    type="text" 
+                    value={sessionName} 
+                    onChange={(e) => setSessionName(e.target.value)} 
+                    placeholder="New Session"
+                    className="mr-2"
+                  />
+                  <Button variant="outline-light" onClick={() => addSession(campaign.id)}>Add Session</Button>
+                </Form>
 
-              <Accordion.Collapse eventKey={campaign.id.toString()}>
-                <>
-                  <Form inline className="justify-content-center my-3">
-                    <Form.Control 
-                      type="text" 
-                      value={sessionName} 
-                      onChange={(e) => setSessionName(e.target.value)} 
-                      placeholder="New Session"
-                      className="mr-2"
-                    />
-                    <Button variant="outline-light" onClick={() => addSession(campaign.id)}>Add Session</Button>
-                  </Form>
-
+                <Accordion defaultActiveKey="0">
                   {campaign.sessions.map(session => (
-                    <ListGroup variant="flush" key={session.id}>
-                      <ListGroup.Item className="bg-dark text-white">
-                        {session.name}
-                        <Badge pill variant="light" className="ml-2" onClick={() => setSelectedSession(session.id === selectedSession ? null : session.id)}>
-                          Notes
-                        </Badge>
-                      </ListGroup.Item>
+                    <Accordion.Item eventKey={session.id.toString()} key={session.id}>
+                      <Accordion.Header>{session.name}</Accordion.Header>
 
-                      {session.id === selectedSession && (
-                        <>
-                          <Form className="justify-content-center my-3 mx-5">
-                            <Form.Control 
-                              as="textarea" 
-                              value={noteContent} 
-                              onChange={(e) => setNoteContent(e.target.value)} 
-                              placeholder="New Note"
-                            />
-                            <Button variant="outline-light" className="mt-2" block onClick={() => addNote(campaign.id, session.id)}>Add Note</Button>
-                          </Form>
+                      <Accordion.Body>
+                        {session.id === selectedSession && (
+                          <>
+                            <Form className="justify-content-center my-3 mx-5">
+                              <Form.Control 
+                                as="textarea" 
+                                value={noteContent} 
+                                onChange={(e) => setNoteContent(e.target.value)} 
+                                placeholder="New Note"
+                              />
+                              <Button variant="outline-light" className="mt-2" block onClick={() => addNote(campaign.id, session.id)}>Add Note</Button>
+                            </Form>
 
-                          {session.notes.map(note => (
-                            <ListGroup.Item key={note.id} className="bg-dark text-white">
-                              {note.content}
-                            </ListGroup.Item>
-                          ))}
-                        </>
-                      )}
-                    </ListGroup>
+                            {session.notes.map(note => (
+                              <ListGroup.Item key={note.id} className="bg-dark text-white">
+                                {note.content}
+                              </ListGroup.Item>
+                            ))}
+                          </>
+                        )}
+                      </Accordion.Body>
+                    </Accordion.Item>
                   ))}
-                </>
-              </Accordion.Collapse>
-            </Card>
+                </Accordion>
+              </Accordion.Body>
+            </Accordion.Item>
           ))}
         </Accordion>
       </Card.Body>
