@@ -28,37 +28,42 @@ const LootGenerator = () => {
             Discover valuable treasures and magical items to reward your adventurers.
           </p>
 
-          <select onChange={(e) => setAmount(e.target.value)}>
-            {[...Array(20)].map((_, i) => <option value={i + 1} key={i + 1}>{i + 1}</option>)}
-          </select>
-          
-          <select onChange={(e) => setType(e.target.value)}>
-            <option value="magic">Magic</option>
-            <option value="non-magic">Non-Magic</option>
-            <option value="mixed">Mixed</option>
-          </select>
-
-          <select onChange={(e) => setRarity(e.target.value)}>
-            <option value="common">Common</option>
-            <option value="uncommon">Uncommon</option>
-            <option value="rare">Rare</option>
-            <option value="very rare">Very Rare</option>
-            <option value="legendary">Legendary</option>
-            <option value="artifact">Artifact</option>
-          </select>
-
-          <button onClick={generateLoot} className="btn btn-light btn-lg loot-btn">Generate Now</button>
+          <div className="row">
+            <div className="col-md-4 mb-3">
+              <select className="form-select" onChange={(e) => setAmount(e.target.value)}>
+                {[...Array(20)].map((_, i) => <option value={i + 1} key={i + 1}>{i + 1}</option>)}
+              </select>
+            </div>
+            <div className="col-md-4 mb-3">
+              <select className="form-select" onChange={(e) => setType(e.target.value)}>
+                <option value="magic">Magic</option>
+                <option value="non-magic">Non-Magic</option>
+                <option value="mixed">Mixed</option>
+              </select>
+            </div>
+            <div className="col-md-4 mb-3">
+              <select className="form-select" onChange={(e) => setRarity(e.target.value)}>
+                <option value="common">Common</option>
+                <option value="uncommon">Uncommon</option>
+                <option value="rare">Rare</option>
+                <option value="very rare">Very Rare</option>
+                <option value="legendary">Legendary</option>
+                <option value="artifact">Artifact</option>
+              </select>
+            </div>
+          </div>
+          <button onClick={generateLoot} className="btn btn-light btn-lg loot-btn mb-3">Generate Now</button>
           {loot && loot.map((item, index) => (
-            <div key={index}>
-              <h2>{item.name}</h2>
-              {item.description && <p>Description: {item.description}</p>}
-              {item.level && <p>Level: {item.level}</p>}
-              {item.uses && <p>Uses: {item.uses}</p>}
-              {item.category && <p>Category: {item.category}</p>}
-              {item.damage_dice && <p>Damage Dice: {item.damage_dice}</p>}
-              {item.damage_type && <p>Damage Type: {item.damage_type}</p>}
-              {item.rarity && <p>Rarity: {item.rarity}</p>}
-              {item.ac && <p>AC: {item.ac}</p>}
+            <div key={index} className="card bg-light text-dark mb-3 p-3">
+              <h2 className="card-title">{item.name}</h2>
+              {item.description && <p><strong>Description:</strong> {item.description}</p>}
+              {item.level && <p><strong>Level:</strong> {item.level}</p>}
+              {item.uses && <p><strong>Uses:</strong> {item.uses}</p>}
+              {item.category && <p><strong>Category:</strong> {item.category}</p>}
+              {item.damage_dice && <p><strong>Damage Dice:</strong> {item.damage_dice}</p>}
+              {item.damage_type && <p><strong>Damage Type:</strong> {item.damage_type}</p>}
+              {item.rarity && <p><strong>Rarity:</strong> {item.rarity}</p>}
+              {item.ac && <p><strong>AC:</strong> {item.ac}</p>}
             </div>
           ))}
         </div>
