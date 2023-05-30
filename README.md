@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Quest Keeper - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Quest Keeper frontend repository! This repository hosts the React.js frontend for the Quest Keeper application, an invaluable tool for Dungeons and Dragons Dungeon Masters. The frontend provides an interactive, user-friendly interface for managing and enhancing gameplay.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+The frontend of Quest Keeper is built with React.js and set up with the create-react-app boilerplate. It utilizes the React Router for navigation and Axios for making HTTP requests to the backend server.
 
-### `npm start`
+The application is divided into several key components, each providing a set of functionality to assist Dungeon Masters in managing campaigns:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Campaign Manager:** Allows for easy management and organization of your campaigns.
+- **Character Generator:** Generate random characters complete with various traits and attributes.
+- **Encounter Builder:** Plan and prepare encounters with a dynamic, intuitive interface.
+- **Initiative Tracker:** Keep track of initiative order during encounters with this helpful tool.
+- **Item Search:** Find items or loot using our robust search feature.
+- **Loot Generator:** Generate random loot items based on your selected parameters: type, rarity, and amount.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+1. Clone the repository to your local machine:
+2. Navigate into the project directory and install dependencies:
+3. Start the application:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    ```bash
+    npm start
+    ```
 
-### `npm run build`
+4. Open your browser and visit `http://localhost:3000`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for being a part of Quest Keeper! Enjoy your adventure!
