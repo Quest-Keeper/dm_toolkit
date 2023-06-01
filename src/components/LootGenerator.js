@@ -20,29 +20,29 @@ const LootGenerator = () => {
   };
 
   return (
-    <div className="col-md-6 offset-md-3">
-      <div className="card bg-dark text-white mb-3 shadow-lg loot-card">
+    <div className="col-md-6 mt-4 offset-md-3">
+      <div className="card bg-dark text-white mb-4 shadow-lg">
         <div className="card-body text-center">
-          <h5 className="card-title">Loot Generator</h5>
-          <p className="card-text">
+          <h5 className="card-title mb-4">Loot Generator</h5>
+          <p className="card-text mb-4">
             Discover valuable treasures and magical items to reward your adventurers.
           </p>
 
           <div className="row">
-            <div className="col-md-4 mb-3">
-              <select className="form-select" onChange={(e) => setAmount(e.target.value)}>
+            <div className="form-group col-md-4">
+              <select className="form-select form-control-lg" onChange={(e) => setAmount(e.target.value)}>
                 {[...Array(20)].map((_, i) => <option value={i + 1} key={i + 1}>{i + 1}</option>)}
               </select>
             </div>
-            <div className="col-md-4 mb-3">
-              <select className="form-select" onChange={(e) => setType(e.target.value)}>
+            <div className="form-group col-md-4">
+              <select className="form-select form-control-lg" onChange={(e) => setType(e.target.value)}>
                 <option value="magic">Magic</option>
                 <option value="non-magic">Non-Magic</option>
                 <option value="mixed">Mixed</option>
               </select>
             </div>
-            <div className="col-md-4 mb-3">
-              <select className="form-select" onChange={(e) => setRarity(e.target.value)}>
+            <div className="form-group col-md-4">
+              <select className="form-select form-control-lg" onChange={(e) => setRarity(e.target.value)}>
                 <option value="common">Common</option>
                 <option value="uncommon">Uncommon</option>
                 <option value="rare">Rare</option>

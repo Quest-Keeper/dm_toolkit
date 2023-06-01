@@ -35,7 +35,7 @@ const CharacterGenerator = () => {
           <p className="card-text mb-4">
             Generate brave heroes and cunning villains for your quests.
           </p>
-          <div className="form-row">
+          <div className="row">
             <div className="form-group col-md-4">
               <select className="form-control form-control-lg" value={race} onChange={e => setRace(e.target.value)}>
                 <option value="">Race</option>

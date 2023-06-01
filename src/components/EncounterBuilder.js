@@ -34,7 +34,7 @@ const EncounterBuilder = () => {
           <p className="card-text mb-4">
             Assemble fearsome monsters and challenging encounters for your players.
           </p>
-          <div className="form-row">
+          <div className="row">
             <div className="form-group col-md-6">
               <select className="form-control form-control-lg" value={monsterType} onChange={e => setMonsterType(e.target.value)}>
                 <option value="">Monster Type</option>
