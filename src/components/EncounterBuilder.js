@@ -1,30 +1,59 @@
 import React, { useState } from 'react';
 import '../SharedStyles.css';
 
-// Define the possible monster types and challenge ratings
 const monsterTypes = ["Dragon", "Beast", "Humanoid", "Fiend", "Undead"];
-const challengeRatings = ["0", "0.5", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "30"];
+const difficulties = ["easy", "medium", "hard", "deadly"];
 
 const EncounterBuilder = () => {
+  const [partySize, setPartySize] = useState(4);
+  const [playerCR, setPlayerCR] = useState(1);
+  const [difficulty, setDifficulty] = useState('easy');
   const [monsterType, setMonsterType] = useState("");
-  const [challengeRating, setChallengeRating] = useState("");
   const [monsters, setMonsters] = useState([]);
 
+  const difficultyMultiplier = {
+    'easy': 0.5,
+    'medium': 1.0,
+    'hard': 1.5,
+    'deadly': 2.0
+  };
+
+  const convertCRToNumber = (cr) => {
+    if (cr.includes("/")) {
+      const [numerator, denominator] = cr.split("/");
+      return numerator / denominator;
+    }
+    return parseFloat(cr);
+  };
+  
+  const randomizeMonster = (monsters) => {
+    const randomIndex = Math.floor(Math.random() * monsters.length);
+    return monsters[randomIndex];
+  }
+
   const fetchMonsters = async () => {
-    const response = await fetch(`http://localhost:3001/api/v1/monsters?type=${monsterType}&challenge_rating=${challengeRating}`);
+    const totalPartyCR = partySize * playerCR * difficultyMultiplier[difficulty];
+    const response = await fetch(`http://localhost:3001/api/v1/monsters?type=${monsterType}&challenge_rating=${totalPartyCR}`);
     const data = await response.json();
-    setMonsters(data.results);
+  
+    let appropriateMonsters = data.results.filter(monster => convertCRToNumber(monster.challenge_rating) <= totalPartyCR);
+
+    const selectedMonster = randomizeMonster(appropriateMonsters);
+    const monsterCR = convertCRToNumber(selectedMonster.challenge_rating);
+    const amount = Math.floor(totalPartyCR / monsterCR);
+ 
+    setMonsters([{ ...selectedMonster, amount }]);
   };
 
   const displayMonsters = () => {
     return monsters.map((monster, index) => (
       <div key={index}>
-        <h5>{monster.name}</h5>
+        <h5>{monster.name} x{monster.amount}</h5>
         <p>Type: {monster.type}</p>
         <p>Challenge Rating: {monster.challenge_rating}</p>
       </div>
     ));
-  };
+  };  
 
   return (
     <div className="col-md-6 mt-4 offset-md-3">
@@ -35,16 +64,26 @@ const EncounterBuilder = () => {
             Assemble fearsome monsters and challenging encounters for your players.
           </p>
           <div className="row">
-            <div className="form-group col-md-6">
-              <select className="form-control form-control-lg" value={monsterType} onChange={e => setMonsterType(e.target.value)}>
-                <option value="">Monster Type</option>
-                {monsterTypes.map((type, index) => <option key={index} value={type}>{type}</option>)}
+            <div className="form-group col-md-3">
+              <label htmlFor="partySize" className="form-label">Party Size</label>
+              <input className="form-control form-control-lg" id="partySize" type="number" value={partySize} onChange={(e) => setPartySize(e.target.value)} required/>
+            </div>
+            <div className="form-group col-md-3">
+              <label htmlFor="playerCR" className="form-label">Player CR</label>
+              <input className="form-control form-control-lg" id="playerCR" type="number" value={playerCR} onChange={(e) => setPlayerCR(e.target.value)} required/>
+            </div>
+            <div className="form-group col-md-3">
+              <label htmlFor="difficulty" className="form-label">Difficulty</label>
+              <select className="form-control form-control-lg" id="difficulty" value={difficulty} onChange={e => setDifficulty(e.target.value)}>
+                <option value="">Select Difficulty</option>
+                {difficulties.map((difficulty, index) => <option key={index} value={difficulty}>{difficulty}</option>)}
               </select>
             </div>
-            <div className="form-group col-md-6">
-              <select className="form-control form-control-lg" value={challengeRating} onChange={e => setChallengeRating(e.target.value)}>
-                <option value="">Challenge Rating</option>
-                {challengeRatings.map((rating, index) => <option key={index} value={rating}>{rating}</option>)}
+            <div className="form-group col-md-3">
+              <label htmlFor="monsterType" className="form-label">Monster Type</label>
+              <select className="form-control form-control-lg" id="monsterType" value={monsterType} onChange={e => setMonsterType(e.target.value)}>
+                <option value="">Select Monster Type</option>
+                {monsterTypes.map((type, index) => <option key={index} value={type}>{type}</option>)}
               </select>
             </div>
           </div>
