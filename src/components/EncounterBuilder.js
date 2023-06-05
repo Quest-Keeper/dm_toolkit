@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import '../SharedStyles.css';
 
-const monsterTypes = ["Dragon", "Beast", "Humanoid", "Fiend", "Undead"];
-const difficulties = ["easy", "medium", "hard", "deadly"];
+const monsterTypes = ["Aberration", "Beast", "Celestial", "Construct", "Dragon", "Elemental", "Fey", "Fiend", "Giant", "Humanoid", "Monstrosity", "Ooze", "Plant", "Undead"];
+const difficulties = ["Easy", "Medium", "Hard", "Deadly"];
 
 const EncounterBuilder = () => {
   const [partySize, setPartySize] = useState(4);
   const [playerCR, setPlayerCR] = useState(1);
-  const [difficulty, setDifficulty] = useState('easy');
+  const [difficulty, setDifficulty] = useState('Easy');
   const [monsterType, setMonsterType] = useState("");
   const [monsters, setMonsters] = useState([]);
 
   const difficultyMultiplier = {
-    'easy': 0.5,
-    'medium': 1.0,
-    'hard': 1.5,
-    'deadly': 2.0
+    'Easy': 0.5,
+    'Medium': 1.0,
+    'Hard': 1.5,
+    'Deadly': 2.0
   };
 
   const convertCRToNumber = (cr) => {
@@ -82,7 +82,7 @@ const EncounterBuilder = () => {
             <div className="form-group col-md-3">
               <label htmlFor="monsterType" className="form-label">Monster Type</label>
               <select className="form-control form-control-lg" id="monsterType" value={monsterType} onChange={e => setMonsterType(e.target.value)}>
-                <option value="">Select Monster Type</option>
+                <option value="">Select Type</option>
                 {monsterTypes.map((type, index) => <option key={index} value={type}>{type}</option>)}
               </select>
             </div>
