@@ -70,7 +70,7 @@ const CampaignManager = () => {
             placeholder="New Campaign"
             className="mr-2"
           />
-          <Button variant="outline-light" onClick={addCampaign}>Add Campaign</Button>
+          <Button variant="btn btn-light btn-lg mt-2" onClick={addCampaign}>New Campaign</Button>
         </Form>
         <Accordion>
           {campaigns.map(campaign => (
