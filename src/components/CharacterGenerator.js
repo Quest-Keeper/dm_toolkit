@@ -7,9 +7,9 @@ const CharacterGenerator = () => {
   const [age, setAge] = useState("");
   const [character, setCharacter] = useState(null);
 
-  const races = ["Dragonborn", "Dwarf", "Elf", "Half-Elf", "Halfing", "Human", "Gnome", "Goblin", "Orc", "Tiefling"];
-  const genders = ["Male", "Female", "Non-binary"];
-  const ages = ["Child", "Teen", "Young Adult", "Middle-aged", "Old"];
+  const races = ["Dragonborn", "Drow", "Dwarf", "Elf", "Half-Elf", "Half-Orc", "Halfing", "Human", "Giant", "Gnome", "Goblin", "Goliath", "Orc", "Tiefling"];
+  const genders = ["Male", "Female", "Non-binary", "Genderless", "Other"];
+  const ages = ["Child", "Teen", "Young Adult", "Middle-aged", "Old", "Very Old", "Ancient"];
 
   const generateCharacter = async () => {
     const requestOptions = {
